@@ -69,7 +69,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
     end
   end
   
-  if item_type == 'file' then
+  if item_type == 'file' and not string.match(url, "^https?://download") then
     html = read_file(file)
     for newurl in string.gmatch(html, '([^"]+)') do
       checknewurl(newurl)
